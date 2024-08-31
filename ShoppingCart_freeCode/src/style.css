@@ -1,0 +1,178 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif;
+}
+i {
+    cursor: pointer;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+}
+/**
+* ! navbar style here
+**/
+.navbar{
+    display: flex;
+    flex-direction: row; /* 橫向 */
+    justify-content: space-between; /* 平均分配寬度和間距 */
+    align-items: center;
+    background-color: #212529;
+    color: white;
+    padding: 25px 60px;
+    margin-bottom: 30px;
+}
+
+.cart{
+    background-color: #fff;
+    color:#212529;
+    font-size: 30px;
+    padding: 5px;
+    border-radius: 4px;
+    position: relative
+}
+.cartAmount{ /*處理購物的數量顯示的位置*/
+    position: absolute;
+    top: -15px;
+    right: -10px;
+    /*
+    position: absolute;
+    top: 0;
+    right: 0; 顯示在最右上角 因為他是依body{ position: relative} 找他的位置
+    且body{ position: relative} 為默認，意思是你沒寫position: relative也認為是 position: relative
+    故 你要把position: relative 換到別的 class上 如購物車.cart{position: relative}
+    */
+    font-size: 16px;
+    background-color: red;
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+}
+/**
+* ! shop items style in here 
+**/
+.shop{
+    display: grid;
+    grid-template-columns: repeat(4, 223px); /*對shop劃分4格，看不出格線? 對格線內的item操作 ex:border: 1px solid black*/
+    gap: 30px; /*對grid 裡的item 產生間隔gap, 反而不是在item加上margin 、padding等設定*/
+    justify-content: center;
+    margin-bottom: 50px;
+}
+/*RWD 設定!!*/
+@media (max-width: 1000px){
+    /*最大螢幕寬度為1000px以內，套用以下設定(即不超過1千pixel可套用)*/
+    .shop{
+        grid-template-columns: repeat(2, 223px);
+    }
+}
+@media (max-width: 500px){
+    /*最大螢幕寬度為500px以內，套用以下設定(即不超過五百pixel可套用)*/
+    .shop{
+        grid-template-columns: repeat(1, 223px);
+    }
+}
+.item{
+    border: 2px solid #212529;
+    border-radius: 4px;
+}
+.item img{  /*商品圖片*/
+    width: 100%;
+    border-radius: 2px 2px 0 0;
+}
+.details{ /*商品內的描述 含標題 描述 價格 數量增減*/
+    display: flex;
+    flex-direction: column; /*直的*/
+    padding: 10px;
+    gap: 10px; /*商品內的描述 含標題 描述 價格 數量增減 做間隔gap*/
+}
+.price-quantity{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /*價格和數量增減看起來沒有在同一個水平線上，明明已經設定justify-content了 其實是因為縱向排列沒有設定
+    align-items: center; 對<h2>跟<div class="buttons"> 縱向、直向排下來、放在中間center*/
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    font-size: 17px;
+}
+/*
+.bi bi-dash-lg{} bi-dash-lg變成藍字*/
+.bi-dash-lg{
+    color:red;
+}
+.bi-plus-lg{
+    color: green;
+}
+/**
+* ! style rules label and some buttons
+**/
+.text-center{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.HomeBtn,
+.checkout,
+.removeAll{
+    background-color: #212529;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.checkout{
+    background-color: green;
+}
+.removeAll{
+    background-color: red;
+}
+.bi-x-lg{
+    color: red;
+    font-weight: bold;
+}
+/**
+* ! style rules shopping-cart 
+**/
+
+.shopping-cart{
+    display: grid;
+    grid-template-columns: repeat(1,320px);
+    justify-content: center;
+    gap: 15px;
+}
+/**
+* ! style rules cart-item
+**/
+.cart-item{
+    border: 2px solid black;
+    border-radius: 5px;
+    display: flex;
+}
+.title-price-x{
+    width: 195px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 2px solid red; */
+}
+.title-price{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.cart-item-price{
+    color:#fff;
+    background-color: #212529;
+    border-radius: 4px;
+    padding: 3px 6px;
+}
